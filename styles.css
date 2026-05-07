@@ -322,26 +322,6 @@ textarea:focus-visible {
   position: relative;
 }
 
-.portrait-wrap {
-  width: 96px;
-  height: 96px;
-  border-radius: 999px;
-  overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--line) 65%, rgba(90, 111, 98, 0.20) 35%);
-  box-shadow: 0 16px 30px rgba(31, 42, 36, 0.10);
-  background: color-mix(in srgb, var(--surface) 80%, rgba(90, 111, 98, 0.10) 20%);
-  margin-bottom: 0.25rem;
-}
-
-.portrait {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  filter: saturate(1.02) contrast(1.02);
-}
-
 .card-kicker {
   margin: 0;
   color: color-mix(in srgb, var(--sage) 80%, var(--muted) 20%);
@@ -457,6 +437,56 @@ textarea:focus-visible {
   background: color-mix(in srgb, var(--surface) 55%, transparent);
   border-top: 1px solid rgba(31, 42, 36, 0.06);
   border-bottom: 1px solid rgba(31, 42, 36, 0.06);
+}
+
+/* About */
+.about {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.about-photo {
+  width: min(360px, 100%);
+  aspect-ratio: 1 / 1;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--line) 65%, rgba(90, 111, 98, 0.18) 35%);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.about-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(600px 220px at 20% 15%, rgba(126, 148, 134, 0.16), transparent 55%),
+    radial-gradient(520px 240px at 85% 70%, rgba(180, 107, 85, 0.12), transparent 60%);
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.about-text {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+  max-width: 72ch;
+}
+
+.about-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.15rem;
 }
 
 .section-head {
@@ -826,6 +856,10 @@ textarea:focus {
 @media (max-width: 920px) {
   .hero-inner {
     grid-template-columns: 1fr;
+  }
+  .about {
+    grid-template-columns: 1fr;
+    align-items: start;
   }
   .contact {
     grid-template-columns: 1fr;
